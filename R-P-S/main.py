@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 from tensorflow.keras.models import load_model
-<<<<<<< HEAD
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -26,9 +25,6 @@ def resize_with_padding(img, size=(64, 64)):
     new_img = cv2.copyMakeBorder(resized, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color)
     return new_img
 
-=======
->>>>>>> 0a42168 (First commit)
-
 # Load trained model
 model = load_model(r'C:\Users\shahe\Documents\GitHub\Rock-paper-scissors\model\rps_model.h5')
 labels = ['paper', 'rock', 'scissors']
@@ -42,10 +38,8 @@ hands = mp_hands.Hands(static_image_mode=False,
 mp_draw = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture(0)
-<<<<<<< HEAD
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1620)   # width
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1280) 
-=======
 
 def determine_winner(move1, move2):
     if move1 == move2:
@@ -59,7 +53,6 @@ def determine_winner(move1, move2):
 
 last_move1, last_move2 = "", ""
 last_winner = ""
->>>>>>> 0a42168 (First commit)
 
 while True:
     ret, frame = cap.read()
@@ -90,7 +83,6 @@ while True:
 
             hand_img = frame[ymin:ymax, xmin:xmax]
 
-<<<<<<< HEAD
             xmin, xmax, ymin, ymax = max(0, xmin), min(w, xmax), max(0, ymin), min(h,ymax)
 
             hand_img = frame[ymin:ymax, xmin:xmax]
@@ -118,7 +110,7 @@ while True:
 
 
     cv2.imshow("RPS Tracking", frame)
-=======
+
             try:
                 resized = cv2.resize(hand_img, (64, 64))
                 normalized = resized / 255.0
@@ -170,7 +162,6 @@ while True:
 
     cv2.imshow("Rock Paper Scissors - Two Players", frame)
 
->>>>>>> 0a42168 (First commit)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
